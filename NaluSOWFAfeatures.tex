@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage[lmargin=0.5in,rmargin=0.5in,tmargin=1.0in,bmargin=1.0in,landscape]{geometry}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\begin{document}
+\title{SOWFA and Nalu Current Features}
+\maketitle
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+
+\midrule
+ability to drive to specified mean temperature and velocity at different heights over time & x & x \\
+ability to read in height/time varying source data applied over planes & x & x \\
+Coriolis & x & x \\
+Boussinesq buoyancy & x & x \\
+density variation as a function of temperature &   & x \\
+density variation as a function of temperature and height &  &  \\
+mixed inflow/outflow side/top boundary condition &  &  \\
+
+\midrule
+standard actuator line (S{\o}rensen \& Shen) & x  & x \\
+standard tower and nacelle actuator models & x & x \\
+actuator line advanced body-force projection functions & x &  \\
+actuator line advanced velocity sampling & x  &  \\
+actuator line coupling with OpenFAST & x & x \\
+advanced blade-resolved OpenFAST coupling &  &  \\
+
+
+
+
+\midrule
+Schumann surface shear stress model (planar averaged)  &  x  &  ?  \\
+Schumann surface shear stress model (local treatment)  &  x  &  x  \\
+Moeng surface shear stress model (planar averaged) &   & x  \\
+Moeng surface shear stress model (local treatment) &   & x  \\
+surface temperature flux model (constant in space/time) & x & x \\
+surface temperature flux model (constant in space/varying in time) & x & ? \\
+surface temperature flux model (varying in space/time) & x & ? \\
+surface temperature flux model (uses a prescribed surface temperature to calculate flux) & x &   \\
+
+
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+
+
+
+\midrule
+ability to save planes of data to use as Dirichlet inflow & x & x \\
+ability to read saved planes of data as Dirichlet inflow & x & x \\
+utilities included to extract WRF data & x & x \\
+ability to read in extracted WRF data as Dirichlet inflow & x & x \\
+temperature perturbations boundary condition (Mu\~noz-Esparza et.~al) for use with WRF inflow & x &   \\
+correlated velocity perturbation boundary condition for use with WRF inflow &   &   \\
+
+
+\midrule
+Standard Smagorinsky SGS model & x & x \\
+One-Equation SGS model (without buoyancy production) & x & x \\
+One-Equation SGS model (with buoyancy production) & x & ? \\
+Lagrangian-averaged scale-independent dynamic Smagorinsky SGS model & x &   \\
+Kosovi\'{c} nonlinear backscatter anisotropy one-equation SGS model & x &   \\
+wall-adaptive SGS model (WALE) &   & x \\
+
+
+
+\midrule
+Menter SST $k$-$\omega$ turbulence model (standard RANS and DES) & x & ? \\
+Spalart-Allmaras turbulence model (standard RANS and DES) & x & ? \\
+$v^2$-$f$ turbulence model &  & ? \\
+
+\midrule
+arbitrary H-refinement (hanging nodes) & x & ? \\
+sliding arbitrary mesh interfaces & x & x \\
+overset meshing &  & x \\
+higher-order capability &  & x \\
+open-source mesh tools for basic mesh creation, arbitrary H-refinement, terrain conforming & x &   \\
+
+\midrule
+wind-specific preprocessing utilities & x & x \\
+wind-specific postprocessing utilities & x &   \\
+point/point-set sampling & x & ? \\
+surface sampling & x & ? \\
+isosurface sampling & x & ? \\
+planar averaging & x & ? \\
+time averaging & x & x \\
+virtual lidar/radar sampling & x &   \\
+
+
+
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
