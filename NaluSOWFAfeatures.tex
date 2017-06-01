@@ -5,6 +5,7 @@
 \usepackage{rotating}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{wasysym}
 
 \begin{document}
 \title{SOWFA/OpenFOAM and Nalu Current Features}
@@ -16,7 +17,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-If I put in a question mark, please update if you know if the feature is included or not.
+\noindent
+\CIRCLE = completely implemented feature \\
+\LEFTcircle = partially implemented feature \\
+blank = unimplemented feature \\
+? = a feature that I am not sure is implemented \\
 
 \begin{center}
 \begin{tabular}{ l | c | c }
@@ -26,34 +31,34 @@ If I put in a question mark, please update if you know if the feature is include
 
 % General large-scale physics
 \midrule
-ability to drive to specified mean temperature and velocity at different heights over time & x & x \\
-ability to read in height/time varying source data applied over planes & x & x \\
-Coriolis & x & x \\
-Boussinesq buoyancy & x & x \\
-density variation as a function of temperature &   & x \\
+ability to drive to specified mean temperature and velocity at different heights over time & \CIRCLE & \CIRCLE \\
+ability to read in height/time varying source data applied over planes & \CIRCLE & \CIRCLE \\
+Coriolis & \CIRCLE & \CIRCLE \\
+Boussinesq buoyancy & \CIRCLE & \CIRCLE \\
+density variation as a function of temperature &   & \CIRCLE \\
 density variation as a function of temperature and height &  &  \\
 
 
 % Actuator line.
 \midrule
-standard actuator line (S{\o}rensen \& Shen) & x  & x \\
-standard tower and nacelle actuator models & x & x \\
-actuator line advanced body-force projection functions & x &  \\
-actuator line advanced velocity sampling & x  &  \\
-actuator line coupling with OpenFAST & x & x \\
-advanced blade-resolved OpenFAST coupling &  &  \\
+standard actuator line (S{\o}rensen \& Shen) & \CIRCLE & \CIRCLE \\
+standard tower and nacelle actuator models & \CIRCLE & \CIRCLE \\
+actuator line advanced body-force projection functions & \CIRCLE &  \\
+actuator line advanced velocity sampling & \CIRCLE  &  \\
+actuator line coupling with OpenFAST & \CIRCLE & \CIRCLE \\
+blade-resolved OpenFAST coupling &  &  \\
 
 
 % Surface flux models.
 \midrule
-Schumann surface shear stress model (planar averaged)  &  x  &  ?  \\
-Schumann surface shear stress model (local treatment)  &  x  &  x  \\
-Moeng surface shear stress model (planar averaged) &   & x  \\
-Moeng surface shear stress model (local treatment) &   & x  \\
-surface temperature flux model (constant in space/time) & x & x \\
-surface temperature flux model (constant in space/varying in time) & x & ? \\
-surface temperature flux model (varying in space/time) & x & ? \\
-surface temperature flux model (uses a prescribed surface temperature to calculate flux) & x &   \\
+Schumann surface shear stress model (planar averaged)  &  \CIRCLE  &  ?  \\
+Schumann surface shear stress model (local treatment)  &  \CIRCLE  &  \CIRCLE  \\
+Moeng surface shear stress model (planar averaged) & \LEFTcircle & \CIRCLE  \\
+Moeng surface shear stress model (local treatment) & \LEFTcircle & \CIRCLE  \\
+surface temperature flux model (constant in space/time) & \CIRCLE & \CIRCLE \\
+surface temperature flux model (constant in space/varying in time) & \CIRCLE & ? \\
+surface temperature flux model (varying in space/time) & \CIRCLE & ? \\
+surface temperature flux model (uses a prescribed surface temperature to calculate flux) & \CIRCLE &   \\
 
 
 % Go to the next page.
@@ -69,11 +74,11 @@ surface temperature flux model (uses a prescribed surface temperature to calcula
 
 % Special boundary conditions.
 \midrule
-ability to save planes of data to use as Dirichlet inflow & x & x \\
-ability to read saved planes of data as Dirichlet inflow & x & x \\
-utilities included to extract WRF data & x & x \\
-ability to read in extracted WRF data as Dirichlet inflow & x & x \\
-temperature perturbations boundary condition (Mu\~noz-Esparza et.~al) for use with WRF inflow & x &   \\
+ability to save planes of data to use as Dirichlet inflow & \CIRCLE & \CIRCLE \\
+ability to read saved planes of data as Dirichlet inflow & \CIRCLE & \CIRCLE \\
+utilities included to extract WRF data & \CIRCLE & \CIRCLE \\
+ability to read in extracted WRF data as Dirichlet inflow & \CIRCLE & \CIRCLE \\
+temperature perturbations boundary condition (Mu\~noz-Esparza et.~al) for use with WRF inflow & \CIRCLE &   \\
 correlated velocity perturbation boundary condition for use with WRF inflow &   &   \\
 mixed inflow/outflow side/top boundary condition &  &  \\
 no-slip upper boundary condition & x &   \\
@@ -81,41 +86,41 @@ no-slip upper boundary condition & x &   \\
 
 % SGS models.
 \midrule
-Standard Smagorinsky SGS model & x & x \\
-One-Equation SGS model (without buoyancy production) & x & x \\
-One-Equation SGS model (with buoyancy production) & x & ? \\
-Lagrangian-averaged scale-independent dynamic Smagorinsky SGS model & x &   \\
-Kosovi\'{c} nonlinear backscatter anisotropy one-equation SGS model & x &   \\
-wall-adaptive SGS model (WALE) &   & x \\
+Standard Smagorinsky SGS model & \CIRCLE & \CIRCLE \\
+One-Equation SGS model (without buoyancy production) & \CIRCLE & \CIRCLE \\
+One-Equation SGS model (with buoyancy production) & \CIRCLE & ? \\
+Lagrangian-averaged scale-independent dynamic Smagorinsky SGS model & \CIRCLE &   \\
+Kosovi\'{c} nonlinear backscatter anisotropy one-equation SGS model & \CIRCLE &   \\
+wall-adaptive SGS model (WALE) &   & \CIRCLE \\
 
 
 % RANS models.
 \midrule
-Menter SST $k$-$\omega$ turbulence model (standard RANS and DES) & x & ? \\
-Spalart-Allmaras turbulence model (standard RANS and DES) & x & ? \\
+Menter SST $k$-$\omega$ turbulence model (standard RANS and DES) & \CIRCLE & ? \\
+Spalart-Allmaras turbulence model (standard RANS and DES) & \CIRCLE & ? \\
 $v^2$-$f$ turbulence model &  & ? \\
 
 
 % Meshing.
 \midrule
-arbitrary H-refinement (hanging nodes) & x & ? \\
-sliding arbitrary mesh interfaces & x & x \\
-overset meshing &  & x \\
-higher-order capability &  & x \\
-open-source mesh tools for basic mesh creation, arbitrary H-refinement, terrain conforming & x &   \\
+arbitrary H-refinement (hanging nodes) & \CIRCLE & ? \\
+sliding arbitrary mesh interfaces & \CIRCLE & \CIRCLE \\
+overset meshing &  & \LEFTcircle \\
+higher-order capability &  & \LEFTcircle \\
+open-source mesh tools for basic mesh creation, arbitrary H-refinement, terrain conforming & \CIRCLE &   \\
 
 
 % Pre/post/in-situ sampling.
 \midrule
-wind-specific preprocessing utilities & x & x \\
-wind-specific postprocessing utilities & x &   \\
-point/point-set sampling & x & ? \\
-surface sampling & x & ? \\
-isosurface sampling & x & ? \\
-planar averaging & x & ? \\
-time averaging & x & x \\
-virtual lidar/radar sampling & x &   \\
-Paraview Catylist coupling &   & x \\
+wind-specific preprocessing utilities & \CIRCLE & \CIRCLE \\
+wind-specific postprocessing utilities & \CIRCLE &   \\
+point/point-set sampling & \CIRCLE & \CIRCLE \\
+surface sampling & \CIRCLE & ? \\
+isosurface sampling & \CIRCLE & ? \\
+planar averaging & \CIRCLE & ? \\
+time averaging & \CIRCLE & \LEFTcircle \\
+virtual lidar/radar sampling & \CIRCLE &   \\
+Paraview Catylist coupling &   & \CIRCLE \\
 
 \bottomrule
 \end{tabular}
