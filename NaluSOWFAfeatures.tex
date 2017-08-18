@@ -11,6 +11,9 @@
 \title{SOWFA/OpenFOAM and Nalu Current Features}
 \maketitle
 
+This document is intended to outline the features of SOWFA/OpenFOAM and Nalu that are pertinent to wind energy.  They are meant to guide the development 
+of Nalu for wind energy applications.  Both OpenFOAM and Nalu have many features beyond those listed here.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,112 +23,148 @@
 \noindent
 \CIRCLE = implemented and fully tested (ready for production) \\
 \LEFTcircle = on-going development (beta-quality) \\
-blank = unimplemented \\
-? = not sure if implemented \\
+\Circle = unimplemented \\
 
+
+\section*{General Large-Scale Physics}
 \begin{center}
 \begin{tabular}{ l | c | c }
 \toprule
 \textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
-
-
-% General large-scale physics
 \midrule
 ability to drive to specified mean temperature and velocity at different heights over time & \CIRCLE & \CIRCLE \\
 ability to read in height/time varying source data applied over planes & \CIRCLE & \CIRCLE \\
 Coriolis & \CIRCLE & \CIRCLE \\
 Boussinesq buoyancy & \CIRCLE & \CIRCLE \\
-density variation as a function of temperature &   & \CIRCLE \\
-density variation as a function of temperature and height &  &  \\
-
-
-% Actuator line.
-\midrule
-standard actuator line (S{\o}rensen \& Shen) framework & \CIRCLE & \CIRCLE \\
-standard tower and nacelle actuator model framework & \CIRCLE & \CIRCLE \\
-actuator line advanced body-force projection functions & \CIRCLE &  \\
-actuator line advanced velocity sampling & \CIRCLE  &  \\
-actuator line coupling with OpenFAST & \LEFTcircle & \LEFTcircle \\
-blade-resolved OpenFAST coupling &  &  \\
-
-
-% Surface flux models.
-\midrule
-Schumann surface shear stress model (planar averaged)  &  \CIRCLE  &  ?  \\
-Schumann surface shear stress model (local treatment)  &  \CIRCLE  &  \CIRCLE  \\
-Moeng surface shear stress model (planar averaged) & \LEFTcircle & \CIRCLE  \\
-Moeng surface shear stress model (local treatment) & \LEFTcircle & \CIRCLE  \\
-surface temperature flux model (constant in space/time) & \CIRCLE & \CIRCLE \\
-surface temperature flux model (constant in space/varying in time) & \CIRCLE & ? \\
-surface temperature flux model (varying in space/time) & \CIRCLE & ? \\
-surface temperature flux model (uses a prescribed surface temperature to calculate flux) & \CIRCLE &   \\
-
-
-% Go to the next page.
+density variation as a function of temperature & \Circle & \CIRCLE \\
+density variation as a function of temperature and height & \Circle & \Circle \\
 \bottomrule
 \end{tabular}
 \end{center}
 
+
+\section*{Actuator Line Turbine Model}
 \begin{center}
 \begin{tabular}{ l | c | c }
 \toprule
 \textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+standard actuator line (S{\o}rensen \& Shen) framework & \CIRCLE & \CIRCLE \\
+standard tower and nacelle actuator model framework & \CIRCLE & \CIRCLE \\
+actuator line advanced body-force projection functions & \CIRCLE & \Circle \\
+actuator line advanced velocity sampling & \CIRCLE  & \Circle \\
+actuator line advanced tip loss correction (Meneveau/Mart{\'i}nez) & \Circle & \Circle \\
+actuator line coupling with OpenFAST & \LEFTcircle & \LEFTcircle \\
+blade-resolved OpenFAST coupling & \Circle & \Circle \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 
-% Special boundary conditions.
+\section*{Surface Flux Models}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+Schumann surface shear stress model (planar averaged)  &  \CIRCLE  &  \Circle \\
+Schumann surface shear stress model (local treatment)  &  \CIRCLE  &  \LEFTcircle  \\
+Moeng surface shear stress model (planar averaged) & \LEFTcircle & \LEFTcircle  \\
+Moeng surface shear stress model (local treatment) & \LEFTcircle & \LEFTcircle  \\
+surface temperature flux model (constant in space/time) & \CIRCLE & \CIRCLE \\
+surface temperature flux model (constant in space/varying in time) & \CIRCLE & \Circle \\
+surface temperature flux model (varying in space/time) & \CIRCLE & \Circle  \\
+surface temperature flux model (uses a prescribed surface temperature to calculate flux) & \CIRCLE & \Circle \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section*{Special Boundary Conditions}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
 \midrule
 ability to save planes of data to use as Dirichlet inflow & \CIRCLE & \CIRCLE \\
 ability to read saved planes of data as Dirichlet inflow & \CIRCLE & \CIRCLE \\
 utilities included to extract WRF data & \CIRCLE & \CIRCLE \\
 ability to read in extracted WRF data as Dirichlet inflow & \CIRCLE & \CIRCLE \\
-temperature perturbations boundary condition (Mu\~noz-Esparza et.~al) for use with WRF inflow & \CIRCLE &   \\
-correlated velocity perturbation boundary condition for use with WRF inflow &   &   \\
-mixed inflow/outflow side/top boundary condition &  &  \\
-no-slip upper boundary condition & x &   \\
-
-
-% SGS models.
-\midrule
-Standard Smagorinsky SGS model & \CIRCLE & \CIRCLE \\
-One-Equation SGS model (without buoyancy production) & \CIRCLE & \CIRCLE \\
-One-Equation SGS model (with buoyancy production) & \CIRCLE & ? \\
-Lagrangian-averaged scale-independent dynamic Smagorinsky SGS model & \CIRCLE &   \\
-Kosovi\'{c} nonlinear backscatter anisotropy one-equation SGS model & \CIRCLE &   \\
-wall-adaptive SGS model (WALE) &   & \CIRCLE \\
-
-
-% RANS models.
-\midrule
-Menter SST $k$-$\omega$ turbulence model (standard RANS and DES) & \CIRCLE & ? \\
-Spalart-Allmaras turbulence model (standard RANS and DES) & \CIRCLE & ? \\
-$v^2$-$f$ turbulence model &  & ? \\
-
-
-% Meshing.
-\midrule
-arbitrary H-refinement (hanging nodes) & \CIRCLE & ? \\
-sliding arbitrary mesh interfaces & \CIRCLE & \CIRCLE \\
-overset capability &  & \LEFTcircle \\
-higher-order capability &  & \LEFTcircle \\
-open-source mesh tools for basic mesh creation, arbitrary H-refinement, terrain conforming & \CIRCLE &   \\
-
-
-% Pre/post/in-situ sampling.
-\midrule
-wind-specific preprocessing utilities & \CIRCLE & \CIRCLE \\
-wind-specific postprocessing utilities & \CIRCLE &   \\
-point/point-set sampling & \CIRCLE & \CIRCLE \\
-surface sampling & \CIRCLE & \LEFTcircle \\
-isosurface sampling & \CIRCLE & ? \\
-planar averaging & \CIRCLE & ? \\
-time averaging & \CIRCLE & \LEFTcircle \\
-virtual lidar/radar sampling & \CIRCLE &   \\
-Paraview Catylist coupling &   & \CIRCLE \\
-
+temperature perturbations boundary condition (Mu\~noz-Esparza et.~al) for use with WRF inflow & \CIRCLE & \Circle \\
+correlated velocity perturbation boundary condition for use with WRF inflow & \LEFTcircle  & \Circle  \\
+mixed inflow/outflow side/top boundary condition & \Circle  & \Circle \\
+no-slip upper boundary condition & \CIRCLE & \CIRCLE  \\
 \bottomrule
 \end{tabular}
 \end{center}
 
+
+\section*{SGS Models}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+Standard Smagorinsky SGS model & \CIRCLE & \CIRCLE \\
+One-Equation SGS model (without buoyancy production) & \CIRCLE & \CIRCLE \\
+One-Equation SGS model (with buoyancy production) & \CIRCLE & \CIRCLE \\
+Lagrangian-averaged scale-independent dynamic Smagorinsky SGS model & \CIRCLE & \Circle  \\
+Kosovi\'{c} nonlinear backscatter anisotropy one-equation SGS model & \CIRCLE & \Circle  \\
+wall-adaptive SGS model (WALE) & \Circle  & \CIRCLE \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section*{RANS models}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+Menter SST $k$-$\omega$ turbulence model (standard RANS and DES) & \CIRCLE & \CIRCLE \\
+Spalart-Allmaras turbulence model (standard RANS and DES) & \CIRCLE & \Circle \\
+$v^2$-$f$ turbulence model & \CIRCLE & \Circle \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section*{Meshing}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+arbitrary H-refinement (hanging nodes) & \CIRCLE & \Circle \\
+discontinuous Galerkin type refinement & \Circle & \LEFTcircle \\
+sliding arbitrary mesh interfaces & \CIRCLE & \CIRCLE \\
+overset capability & \CIRCLE & \LEFTcircle \\
+higher-order capability & \Circle & \LEFTcircle \\
+open-source mesh tools for basic mesh creation, arbitrary H-refinement, terrain conforming & \CIRCLE & \Circle \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\section*{Pre/Post/In-situ Sampling}
+\begin{center}
+\begin{tabular}{ l | c | c }
+\toprule
+\textbf{Feature} & \textbf{SOWFA/OpenFOAM} & \textbf{Nalu} \\
+\midrule
+wind-specific preprocessing utilities & \CIRCLE & \CIRCLE \\
+wind-specific postprocessing utilities & \CIRCLE & \Circle \\
+point/point-set sampling & \CIRCLE & \CIRCLE \\
+surface sampling & \CIRCLE & \LEFTcircle \\
+isosurface sampling & \CIRCLE & \CIRCLE \\
+planar averaging & \CIRCLE & \Circle \\
+time averaging & \CIRCLE & \LEFTcircle \\
+virtual lidar/radar sampling & \CIRCLE & \LEFTcircle \\
+Paraview Catylist coupling & \Circle  & \CIRCLE \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
